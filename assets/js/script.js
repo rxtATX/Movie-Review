@@ -1,22 +1,10 @@
 const mainDiv = document.querySelector("main");
 
-const mockData = [
-  {
-    id: 1,
-    username: "rxtatx",
-    date: new Date(),
-    title: "I liked it",
-    movieName: "Swiss Army Man",
-    review: "It was trippy.",
-    posterUrl: "https://m.media-amazon.com/images/M/MV5BMTk0OTEyMjM1OF5BMl5BanBnXkFtZTgwMzMzODM4ODE@._V1_SX300.jpg",
-    plot: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto maiores expedita dolor corrupti esse atque officiis. Nemo exercitationem et veniam explicabo beatae alias molestiae atque, architecto tenetur, repudiandae a debitis."
-  }
-]
-
-function renderReviews() {
+function renderReviews(arrayOfData) {
+  mainDiv.innerHTML = "";
   // @@TODO: mockData needs to be replaced with an argument - the fetch data function will supply the argument when invoked
-  for (let i = 0; i < mockData.length; i++) { // mockdata is an array
-    const review = mockData[i]; // review is now an object
+  for (let i = 0; i < arrayOfData.length; i++) { // arrayOfData is an array
+    const review = arrayOfData[i]; // review is now an object
 
     // create the DOM nodes
     const row = document.createElement("div");
@@ -77,4 +65,4 @@ function renderReviews() {
   }
 }
 
-renderReviews();
+renderReviews(JSON.parse(localStorage.getItem("reviews")));
